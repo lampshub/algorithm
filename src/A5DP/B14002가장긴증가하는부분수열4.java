@@ -3,8 +3,7 @@ package A5DP;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class B14002가장긴증가하는부분수열4 {
     public static void main(String[] args) throws IOException {
@@ -12,20 +11,49 @@ public class B14002가장긴증가하는부분수열4 {
         int N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
         int[] arr = new int[N];
-        for(int i = 0; i<N; i++){
-            arr[i] = Integer.parseInt(st.nextToken());
-        }
-        int[] dp = new int[N];
-        int[] prevIndex = new int[N];
-        Arrays.fill(dp,1);
-        Arrays.fill(prevIndex,-1);
+        int[] dp =  new int[N];
+        int[] prevArr = new int[N];  //최대값 이전 수열의 idx 담는 용
+        int maxSize=1;
+        int maxSizeIndex=0; //-1로 설정하면 안됌 -> 입력이 전부 감소수열이면 maxSize가 1일때 인덱스가 안바뀔수있음!
 
-        for(int i=0; i<N; i++){
+        for(int i = 0; i<N; i++){
+         arr[i] = Integer.parseInt(st.nextToken());
+        }
+        Arrays.fill(dp, 1);
+        Arrays.fill(prevArr,-1);
+
+        for(int i = 0; i<N; i++){
             for(int j=0; j<i; j++){
-                if(arr[i]>arr[j]){
-                    dp[i]= Math.max(dp[j]+1,dp[i]);     //{ 1  2  1  3  2  4 }
+                if(arr[i]>arr[j]) {
+                    if(dp[i]<=dp[j]){
+                        dp[i] = dp[j] + 1;
+                        prevArr[i] = j;
+                    }
                 }
             }
+            if(dp[i]>maxSize){
+                maxSize = dp[i];
+                maxSizeIndex = i;
+            }
+        }
+//        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(dp));
+//        System.out.println(Arrays.toString(prevArr));
+//        System.out.println(maxSize);
+//        System.out.println(maxSizeIndex);
+
+        List<Integer> maxArrList = new ArrayList<>();
+        while(maxSizeIndex != -1){
+            maxArrList.add(arr[maxSizeIndex]);
+            maxSizeIndex = prevArr[maxSizeIndex];
+        }
+
+//        Collections.sort(maxArrList);
+        maxArrList.sort(Comparator.naturalOrder());
+
+        System.out.println(maxSize);
+        for(int i=0; i<maxArrList.size(); i++){
+            System.out.print(maxArrList.get(i)+" ");
         }
     }
 }
@@ -56,7 +84,7 @@ public class B14002가장긴증가하는부분수열4 {
 //                // 이 때 arrTemp에는 arr 중 나보다 작은 애들의 배열들을 담으면 됨
 //                // i = 3이라면, dp[]
 //                if (arr[i] > arr[j]) {
-//                    if (dp[i] < dp[j] + 1) {  //
+//                    if (dp[i] < dp[j] + 1) {
 //                        dp[i] = dp[j] + 1;
 //                        arrTemp[i] = j;
 //                    }
