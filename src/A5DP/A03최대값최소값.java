@@ -32,37 +32,37 @@ public class A03최대값최소값 {
 
 ////       정수삼각형 : 프로그래머스
 ////        정수삼각형 : 백준
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        int[][] arr = new int[N][];
-        for(int i = 0; i<N; i++) {
-            arr[i] = new int[i + 1];
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < i+1; j++) {
-                arr[i][j] = Integer.parseInt(st.nextToken());
-            }
-        }
-        System.out.println(Arrays.deepToString(arr));
-
-        int[][] dp = new int[N][];
-        dp[0]=arr[0];
-        for(int i = 1; i<N; i++) {
-            dp[i] = new int[i + 1];
-            for (int j = 0; j < dp[i].length; j++) {
-                if (j == 0) {
-                    dp[i][j] = dp[i - 1][j] + arr[i][j];
-                } else if(i == j){
-                    dp[i][j] = dp[i - 1][j-1] + arr[i][j];
-                } else {
-                    dp[i][j] = Math.max(dp[i - 1][j - 1], dp[i - 1][j]) + arr[i][j];
-                }
-            }
-        }
-        int max = 0;
-        for(int i=0; i<dp[N-1].length; i++){
-                max = Math.max(dp[N-1][i],max);
-        }
-        System.out.println(max);
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        int N = Integer.parseInt(br.readLine());
+//        int[][] arr = new int[N][];
+//        for(int i = 0; i<N; i++) {
+//            arr[i] = new int[i + 1];
+//            StringTokenizer st = new StringTokenizer(br.readLine());
+//            for (int j = 0; j < i+1; j++) {
+//                arr[i][j] = Integer.parseInt(st.nextToken());
+//            }
+//        }
+//        System.out.println(Arrays.deepToString(arr));
+//
+//        int[][] dp = new int[N][];
+//        dp[0]=arr[0];
+//        for(int i = 1; i<N; i++) {
+//            dp[i] = new int[i + 1];
+//            for (int j = 0; j < dp[i].length; j++) {
+//                if (j == 0) {
+//                    dp[i][j] = dp[i - 1][j] + arr[i][j];
+//                } else if(i == j){
+//                    dp[i][j] = dp[i - 1][j-1] + arr[i][j];
+//                } else {
+//                    dp[i][j] = Math.max(dp[i - 1][j - 1], dp[i - 1][j]) + arr[i][j];
+//                }
+//            }
+//        }
+//        int max = 0;
+//        for(int i=0; i<dp[N-1].length; i++){
+//                max = Math.max(dp[N-1][i],max);
+//        }
+//        System.out.println(max);
 
 ////       내려가기(2096) : 백준
 ////        1) 이전줄만 기억하는 1차원 배열 사용 -> O(1)
