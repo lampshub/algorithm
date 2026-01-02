@@ -25,16 +25,16 @@ public class A05배낭문제 {
             arr[i][0]=a;
             arr[i][1]=b;
         }
-        int[] dp= new int[K+1];
-        Arrays.fill(dp,0);
-        for(int i=0; i<dp.length; i++){
-            for(int j=0; j<arr.length; j++) {
-                if (i - arr[j][0] > 0) {
-                    dp[i] = Math.max(dp[i], arr[j][1] + dp[i - j]);
+
+        int[] dp = new int[K+1];    //초기값 0 세팅
+        for(int i=0; i<arr.length; i++){
+            for(int j=K; j>=arr[i][0]; j--) {
+                dp[j] = Math.max(dp[j], arr[i][1] + dp[j-arr[i][0]]);
                 }
             }
-        }
-        System.out.println(Arrays.toString(dp));
+        System.out.println(dp[K]);
+
+
 
 
 
@@ -52,7 +52,7 @@ public class A05배낭문제 {
 //            System.out.println();
 //        }
 
-//        평범한 벼락치기(14728) - 백준
+//        벼락치기(14728) - 백준
 //        -> 주어진 데이터를 1번만 사용가능
 //        호텔  - 백준
 //        -> 주어진 데이터를 여러번 사용가능

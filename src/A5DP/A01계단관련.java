@@ -1,5 +1,6 @@
 package A5DP;
 
+// 알고리즘 구현 문제도 풀어보기!
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
