@@ -37,21 +37,6 @@ public class A05배낭문제 {
 
 
 
-
-
-//        List<List<Integer>> combiCase = new ArrayList<>();
-//        for(int i=0; i<N; i++){
-//            for(int j=i+1; j<N; j++){
-//                List<Integer> temp = new ArrayList<>();
-//            } -> dfs로 하면 안됨. 2의 n제곱
-//        int[] dp = new int[K+1];
-//        for (int i=0; i<bagWV.length; i++){
-//            for(int j=K; j>=bagWV[i][0]; j--){   //물건의 무게가 있는 index
-//                dp[j]= Math.max(dp[j],dp[j-bagWV[i][0]]+bagWV[i][1]);
-//            }
-//            System.out.println();
-//        }
-
 //        벼락치기(14728) - 백준
 //        -> 주어진 데이터를 1번만 사용가능
 //        호텔  - 백준

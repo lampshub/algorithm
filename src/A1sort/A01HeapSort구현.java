@@ -16,7 +16,7 @@ public class A01HeapSort구현 {
         for(int i = arr.length/2 -1; i>=0; i--){
             heapify(arr, i, arr.length);
         }
-//        최초힙 결과 : 1 3 5 6 7 5 9 8 6 (최소힙)
+//        최초힙 결과 : 1 3 5 6 7 5 9 8 6 (->최소힙)
         System.out.println(Arrays.toString(arr));
 
 //        2. 루트노드와 최하위노드를 자리change해가면서 재heapify

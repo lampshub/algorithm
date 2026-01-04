@@ -1,7 +1,7 @@
 package A3bfs;
 
 import java.util.*;
-
+//**못풀었음
 public class B1697숨바꼭질 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
