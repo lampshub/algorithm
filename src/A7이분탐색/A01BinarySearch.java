@@ -37,7 +37,7 @@ public class A01BinarySearch {
                     start = mid+1;
                 } else if(arr[mid] > target) {
                     end = mid-1;
-                    answer = mid;   //arr에 없는값인데 있어야할 곳
+                    answer = mid;   //arr에 없는값인데 있어야 할 곳
                 } else if(arr[mid] == target){
                     answer = mid;
                     break;
